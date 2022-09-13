@@ -56,7 +56,7 @@ export class TweetsDataService {
     })
   }
   setLikes(userName:string,id:string) :Observable<Object>{
-    console.log("function");
+    
     
     return this.http.put<Object>(`http://localhost:33892/api/v1/tweets/${userName}/like/${id}`,"",{
       observe:'body',responseType:'text'as 'json'

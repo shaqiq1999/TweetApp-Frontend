@@ -25,11 +25,10 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    console.log('not checked')
     this.service.authenticateUser(new LogIn(this.userName, this.password)).subscribe(response => {
 
       if (response === true) {
-        console.log('checked')
+        
         localStorage.setItem('authenticatedUser', this.userName)
         this.router.navigate(['tweets', this.userName, 'home'])
         this.invalidLogin = false

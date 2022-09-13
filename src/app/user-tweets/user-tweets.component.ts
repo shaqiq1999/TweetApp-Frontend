@@ -60,7 +60,7 @@ export class UserTweetsComponent implements OnInit {
       this.tweets = response
      
     },responseError=>{
-      console.log(responseError.error)
+      
       
       this.tweetsToShow = "No tweet of this user"
       
@@ -72,7 +72,7 @@ export class UserTweetsComponent implements OnInit {
   }
 
   setLikes(id:string){
-    console.log("set")
+    
     this.service.setLikes(this.loggedinname,id).subscribe(response =>{ 
       this.likeDislike=response.toString()
       this.ngOnInit();

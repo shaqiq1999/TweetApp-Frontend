@@ -34,7 +34,7 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     
-    console.log(this.currentTweet)
+    
     
     this.tweet.TweetBody=this.currentTweet.trim()
   }

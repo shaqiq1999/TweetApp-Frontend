@@ -18,10 +18,10 @@ export class UsersComponent implements OnInit {
     userName: '',
     password: '',
     ContactNumber: '',
-    securityKey:''
+    securityKey: ''
   }
-    
-  
+
+
 
   userName = ''
 
@@ -37,7 +37,7 @@ export class UsersComponent implements OnInit {
 
     this.service.getAllUsers().subscribe(response => {
       this.users = response
-      console.log(this.users)
+
     })
   }
 
@@ -51,19 +51,19 @@ export class UsersComponent implements OnInit {
       this.searchMessage = ''
       this.service.searchByRegex(this.str).subscribe(data => {
         this.users = data
-        console.log(this.users)
-       
-          
-        
 
-      },errorData=>{
+
+
+
+
+      }, errorData => {
         this.users = errorData
-        console.log(this.users)
+
         if (!this.users.length) {
-          this.noUser = "No Results for '" + this.str+"'"
+          this.noUser = "No Results for '" + this.str + "'"
           this.service.getAllUsers().subscribe(response => {
             this.users = response
-            console.log(this.users)
+
           })
         }
 

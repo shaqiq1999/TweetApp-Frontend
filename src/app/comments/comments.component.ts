@@ -50,14 +50,12 @@ export class CommentsComponent implements OnInit {
 
     // this.tweetid = this.route.snapshot.params['tweetId']
     // this.name = this.route.snapshot.params['userName']
-    console.log(this.name, this.tweetid)
+    
     this.service.getTweetsofUser(this.currentname).subscribe(response => {
       response.forEach(reply => {
         if (reply.id === this.tweetid) {
           this.tweet = reply
-          console.log(reply)
-          console.log(reply.TweetReply)
-          console.log(Object.assign(reply.TweetReply))
+          
           this.comments = reply.TweetReply
 
           if (this.comments.length == 0) {
@@ -70,21 +68,7 @@ export class CommentsComponent implements OnInit {
 
   }
 
-  // postComment() {
-  //   if (this.comment === '') {
-  //     this.messageInComment = "Please type something before replying to tweet"
-  //   }
-  //   else {
-  //     this.messageInComment = ''
-  //     this.tweetreply.Reply=this.comment
-  //     this.service.postComment(this.name,this.tweetid,this.tweetreply).subscribe(response => {
-  //       // this.router.navigate(['tweets', this.name, 'comments', this.tweetid]).then(() => {
-  //       //   window.location.reload();
-  //       // });
-  //       this.ngOnInit();
-  //     })
-  //   }
-  // }
+  
   openComment() {
     if (this.comment.trim() === '') {
       this.messageInComment = "Please type something before replying to tweet"
@@ -93,10 +77,7 @@ export class CommentsComponent implements OnInit {
       this.messageInComment = ''
       this.tweetreply.Reply = this.comment
       this.service.postComment(this.name, this.tweetid, this.tweetreply).subscribe(response => {
-        // const modalRef = this.modalService.open(CommentsComponent);
-        // modalRef.componentInstance.name = this.name;
-        // modalRef.componentInstance.tweetid = this.tweetid;
-        // modalRef.componentInstance.history = this.history;
+        
         console.log(this.history)
         if (this.history === 'home')
           this.router.navigate(['tweets', this.name, 'home']).then(() => {

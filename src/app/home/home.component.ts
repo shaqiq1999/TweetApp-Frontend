@@ -66,11 +66,9 @@ export class HomeComponent implements OnInit {
 
     this.service.getTweetsofUser(this.name).subscribe(response => {
       this.tweets = response
-      console.log(response)
+      
 
-    }, responseError => {
-      console.log(responseError.error)
-
+    }, responseError => {   
       this.tweetsToShow = "You haven't tweeted recently."
 
     })
@@ -112,7 +110,6 @@ export class HomeComponent implements OnInit {
 
   updateTweet(uniqueId: number, TweetBody: string) {
     // this.router.navigate(['tweets', this.name, 'update', uniqueId])
-    console.log(TweetBody)
     const modalRef = this.modalService.open(UpdateComponent);
     modalRef.componentInstance.username = this.name;
     modalRef.componentInstance.tweetid = uniqueId;
@@ -124,18 +121,18 @@ export class HomeComponent implements OnInit {
   
 
   setLikes(id: string) {
-    console.log("setLikes")
+    
     
     this.service.setLikes(this.name, id).subscribe(response => {
       this.likeDislike = response.toString()
-      console.log(this.likeDislike)
-      if (this.likeDislike == 'Liked') {
-        console.log("Liked entering")
+      
+      // if (this.likeDislike == 'Liked') {
+      //   console.log("Liked entering")
         
-      }
-      if (this.likeDislike == 'Disliked') {
+      // }
+      // if (this.likeDislike == 'Disliked') {
         
-      }
+      // }
       this.ngOnInit();
     })
   }
@@ -145,8 +142,7 @@ export class HomeComponent implements OnInit {
 
   searchInfo(content: TemplateRef<any>) {
     this.userservice.getUser(this.name).subscribe(response => {
-      console.log(response)
-      response.forEach(element => {
+        response.forEach(element => {
         if(element.userName==this.name)
         this.user=element
       });

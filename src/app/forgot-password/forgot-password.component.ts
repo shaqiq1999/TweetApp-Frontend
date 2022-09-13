@@ -26,11 +26,11 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPassword(){
     this.service.forgot(this.userName,new ForgotKey(this.userName,this.newPassword,this.securityKey)).subscribe(response => {
       this.message=response.toString() 
-      console.log(this.message)
+      
       
     },responseError=>{
       this.errormessage=responseError.error
-      console.log(responseError.error, "Error")
+      
     })
     
     

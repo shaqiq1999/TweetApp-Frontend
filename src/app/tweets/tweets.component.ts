@@ -43,8 +43,7 @@ export class TweetsComponent implements OnInit {
       this.service.getAllTweets().subscribe(response => {
         this.tweets = response
         
-      },responseError=>{
-        console.log(responseError.error)
+      },responseError=>{    
         
         this.tweetsToShow = "No Tweets to show"
         
@@ -56,8 +55,7 @@ export class TweetsComponent implements OnInit {
   setLikes(id:string){
     this.service.setLikes(this.userName,id).subscribe(response =>{ 
       this.likeDislike=response.toString()
-      console.log(response)
-      console.log(this.likeDislike)
+      
       this.ngOnInit();
   })
   }
