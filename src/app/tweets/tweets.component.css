@@ -1,0 +1,17 @@
+li{
+    border-left: none;
+    border-right: none;
+    
+}
+
+.tweet{
+    padding-bottom: 1%;
+}
+.button button{
+    background-color: white;
+    border: none;
+    color: green;
+}
+a{
+    text-decoration: none;
+}

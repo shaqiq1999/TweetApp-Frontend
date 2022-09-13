@@ -1,0 +1,73 @@
+<h1>Register!</h1>
+<div id="register-form-wrap">
+<div class="container float-container ">
+    <!-- <div *ngIf="registerForm.invalid" class="alert alert-warning">Enter valid values</div> -->
+    <div *ngIf="errorBool" class="alert alert-danger">Either Email or Login ID is already taken. Please provide another
+        Email and Login ID.</div>
+    <form (ngSubmit)="!registerForm.invalid && register()" #registerForm="ngForm">
+        <div class="float-child">
+            <div class="form-group row">
+                <label  class="col-sm-4 col-form-label" for="FirstName">First Name</label>
+                <div class="col-sm-8">
+                <input  type="text" class="form-control " uniqueId="FirstName" name="FirstName"
+                    placeholder="Enter First Name" required="required" [(ngModel)]="FirstName">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="LastName">Last Name</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" uniqueId="LastName" name="LastName"
+                    placeholder="Enter Last Name" required="required" [(ngModel)]="LastName">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" class="col-sm-4 col-form-label" for="Email">Email</label>
+                <div class="col-sm-8">
+                <input type="Email" class="form-control" uniqueId="Email" name="Email" placeholder="Enter Email"
+                    required="required" [(ngModel)]="Email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="userName">Login ID</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" uniqueId="userName" name="userName" placeholder="Enter Login ID"
+                    required="required" [(ngModel)]="userName">
+                    </div>
+            </div>
+        </div>
+        <div class="float-child">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="Password">Password</label>
+                <div class="col-sm-8">
+                <input type="password" class="form-control" uniqueId="Password" name="Password"
+                    placeholder="Enter Password" required="required" [(ngModel)]="password" #password1="ngModel">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="Password">Confirm Password</label>
+                <div class="col-sm-8">
+                <input type="password" class="form-control" uniqueId="ConfirmPassword" name="ConfirmPassword"
+                    placeholder="Enter Password Again" required="required" [(ngModel)]="confirmPassword"
+                    #confirmPassword1="ngModel" pattern="{{password}}">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="securityKey">Security Key</label>
+                <div class="col-sm-8">
+                <input type="password" class="form-control" uniqueId="securityKey" name="securityKey"
+                    placeholder="Enter Security Key" required="required" [(ngModel)]="securityKey" #password1="ngModel">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="ContactNumber">Contact Number</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" uniqueId="ContactNumber" name="ContactNumber"
+                    placeholder="Enter Contact Number" required="required" [(ngModel)]="ContactNumber"
+                    pattern="^[0-9]{10}$">
+                    </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+    </div>
+</div>

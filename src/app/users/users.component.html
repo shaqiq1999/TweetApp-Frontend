@@ -1,0 +1,73 @@
+<br>
+<h1>Users</h1>
+
+<div class="container">
+    <div class="input-group">
+        <div class="form-outline div">
+            <input type="search" class="form-control" placeholder="Search by username" [(ngModel)]="str">
+        </div>
+        <button uniqueId="search-button" type="button" class="btn btn-success bt" (click)="search()">
+            Search
+        </button>
+        <button uniqueId="search-button" type="button" class="btn btn-success" (click)="all()">
+            All Users
+        </button>
+    </div>
+    <br />
+    <div *ngIf="searchMessage" class="alert alert-warning">{{searchMessage}}</div>
+    <ul class="list-group">
+        <div *ngIf="noUser" class="alert alert-warning">{{noUser}}</div>
+        <li class="list-group-item" *ngFor="let u of users">
+
+
+            <ngb-accordion #acc="ngbAccordion">
+                <ngb-panel>
+                    <ng-template ngbPanelHeader>
+
+                        <div class="button left" textalign="center">
+
+                            <h5 class="success"><ngx-avatar bgColor="green" fgColor="white" size="40"  name="{{u.userName}}"></ngx-avatar>&nbsp;{{u.userName}} </h5>
+
+                            <button class="btn btn-outline-success btn-lg " style="float: right;">
+                                <a *ngIf="!(userName===u.userName)"
+                                    routerLink="/tweets/{{userName}}/user/{{u.userName}}">
+                                    <i style="color: green;" class="material-icons m-icons">comment</i>
+                                </a>
+                                <a *ngIf="userName===u.userName" routerLink="/tweets/{{userName}}/home">
+                                    <i style="color: green;" class="material-icons m-icons">comment</i>
+                                </a>
+                            </button>
+                            <button ngbPanelToggle class="btn btn-outline-success btn-lg " style="float: right;"><i
+                                    class="material-icons m-icons">
+                                    info
+                                </i></button>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <ul class="list-group">
+                            <li class="list-group-item box pull-right reply">
+                                <a>Full Name: </a>
+                                <a class="text-muted">
+                                    {{u.FirstName}} {{u.LastName}}
+                                </a>
+                            </li>
+                            <li class="list-group-item box pull-right reply">
+                                <a>Email Id: </a>
+                                <a class="text-muted">
+                                    {{u.Email}}
+                                </a>
+                            </li>
+                            <li class="list-group-item box pull-right reply">
+                                <a>Contact Number: </a>
+                                <a class="text-muted">
+                                    {{u.ContactNumber}}
+                                </a>
+                            </li>
+
+                        </ul>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
+        </li>
+    </ul>
+</div>

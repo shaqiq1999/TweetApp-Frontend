@@ -1,0 +1,91 @@
+<br>
+<h1>Tweets</h1>
+
+<div class="container tweet ">
+    <div *ngIf='tweetsToShow'>
+        <div style="padding-top: 15%;" class="text-center ms-5 me-3 my-3">
+
+            <div class="d-flex justify-content-center align-items-center">
+                <i class="fa fa-twitter" style="font-size:48px;color:#D3D3D3"></i>
+                &nbsp;
+                <h2 style="color: #D3D3D3;" class="d-inline"><strong> No Recent tweets to show</strong></h2>
+            </div>
+
+        </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let tweet of tweets">
+            <div id="tweet">
+                <a *ngIf="!(userName===tweet.userName)" routerLink="/tweets/{{userName}}/user/{{tweet.userName}}">
+                    <h5 style="display: inline;">
+                        <ngx-avatar bgColor="green" fgColor="white" size="35" name="{{tweet.userName}}"></ngx-avatar>
+                        &nbsp;{{tweet.userName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </h5><small class="text-muted">{{tweet.TweetTime | date : 'dd MMM yyyy, h:mm a'}}</small>
+                </a>
+                <a *ngIf="userName===tweet.userName" routerLink="/tweets/{{userName}}/home">
+                    <h5 style="display: inline;">
+                        <ngx-avatar bgColor="green" fgColor="white" size="35" name="{{tweet.userName}}"></ngx-avatar>
+                        &nbsp;{{tweet.userName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </h5><small class="text-muted">{{tweet.TweetTime | date : 'dd MMM yyyy, h:mm a'}}</small>
+                </a>
+                <p class="nm">{{tweet.TweetBody}}</p>
+                <ngb-accordion #acc="ngbAccordion">
+                    <ngb-panel title="Simple">
+                        <ng-template ngbPanelHeader>
+                            <div class="button">
+                                <button (click)="setLikes(tweet.id)"><i
+                                        [ngClass]="((tweet.LikedUser).includes(userName))?'material-icons':'material-icons-outlined'">thumb_up</i><small
+                                        placement="bottom" ngbTooltip="{{tweet.LikedUser}}"
+                                        class="badge badge-success badge-pill">
+                                        <ng-container *ngIf="(tweet.LikesCount!=0)">{{tweet.LikesCount}}</ng-container>
+                                    </small></button>
+                                <!-- <button (click)="postComment(tweet.id)"><i class="material-icons">comment</i></button> -->
+                                <button (click)="openComment(tweet.id,tweet.userName)"><i
+                                        class="material-icons-outlined">add_comment</i></button>
+
+                                <button ngbPanelToggle placement="top" ngbTooltip="View All Replies" ngbPanelToggle><i class="material-icons ">comment</i></button>
+                            </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <ul class="list-group">
+                                <li class="list-group-item box pull-right reply"
+                                    *ngFor="let tweetreply of tweet.TweetReply">
+                                    <div id="talkbubble">
+                                        <a *ngIf="!(userName===tweetreply.userName)"
+                                            routerLink="/tweets/{{userName}}/user/{{tweetreply.userName}}">
+                                            <h5>
+                                                <ngx-avatar bgColor="green" fgColor="white" size="35"
+                                                    name="{{tweetreply.userName}}"></ngx-avatar>
+                                                &nbsp;{{tweetreply.userName}}
+                                            </h5>
+                                        </a>
+                                        <a *ngIf="userName===tweetreply.userName"
+                                            routerLink="/tweets/{{userName}}/home">
+                                            <h5>
+                                                <ngx-avatar bgColor="green" fgColor="white" size="35"
+                                                    name="{{tweetreply.userName}}"></ngx-avatar>
+                                                &nbsp;{{tweetreply.userName}}
+                                            </h5>
+                                        </a>
+                                        <p class="nm">{{tweetreply.Reply}}</p>
+                                        <small class="text-muted">{{tweetreply.ReplyTime | date : 'dd MMM yyyy, h:mm
+                                            a'}}</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+            </div>
+            <br>
+
+
+
+
+
+
+
+
+        </li>
+    </ul>
+</div>

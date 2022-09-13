@@ -1,0 +1,64 @@
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div id="tweet">
+            <a *ngIf="!(name===tweet.userName)" routerLink="/tweets/{{name}}/user/{{tweet.userName}}">
+                <h5 style="display: inline;"><ngx-avatar bgColor="green" fgColor="white" size="35"  name="{{tweet.userName}}"></ngx-avatar>&nbsp;{{tweet.userName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5><small class="text-muted">{{tweet.TweetTime | date : 'dd MMM yyyy, h:mm a'}}</small>
+            </a>
+            <a *ngIf="name===tweet.userName" routerLink="/tweets/{{name}}/home">
+                <h5 style="display: inline;"><ngx-avatar bgColor="green" fgColor="white" size="35"  name="{{tweet.userName}}"></ngx-avatar>&nbsp;{{tweet.userName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5><small class="text-muted">{{tweet.TweetTime | date : 'dd MMM yyyy, h:mm a'}}</small>
+            </a>
+            <p class="nm para">{{tweet.TweetBody}}</p>
+            </div>
+        </li>
+    </ul>
+
+   <br>
+
+    <div class="container">
+        <div class="form-group">
+            <textarea class="form-control" rows="3" maxlength="144" placeholder="Reply To Tweet"
+                [(ngModel)]="comment"></textarea>
+                <span class="addfield" *ngIf="comment.length>0"><small>{{144-comment.length}} of 144 Characters Left</small></span>
+        </div>
+        <!-- <div class="form-group">
+            <textarea class="form-control" rows="2" maxlength="50" placeholder="Add tags (Optional)"
+                [(ngModel)]="tags"></textarea>
+        </div> -->
+
+        <div *ngIf="messageInComment" class="alert alert-warning">{{messageInComment}}
+        </div>
+        <div>
+            <button class="btn btn-success" (click)=openComment()>Send   <span class="material-icons m-icons">send</span></button>
+        </div>
+        <br>
+
+        <div *ngIf='noComments'>
+            <div  class="text-center ms-5 me-3 my-3" >
+            
+                <div class="d-flex justify-content-center align-items-center" >
+                  <i class="fa fa-twitter" style="font-size:35px;color:#D3D3D3"></i>
+                  &nbsp;
+                  <h4 style="color: #D3D3D3;" class="d-inline"><strong> Be the first to comment</strong></h4>
+                </div>
+              
+          </div>
+        </div>
+        <div *ngElse>
+        <h4>Comments</h4>   
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item box" *ngFor="let tweetreply of comments">
+            <a *ngIf="!(name===tweetreply.userName)" routerLink="/tweets/{{name}}/user/{{tweetreply.userName}}">
+                <h5><ngx-avatar bgColor="green" fgColor="white" size="35"  name="{{tweetreply.userName}}"></ngx-avatar>&nbsp;{{tweetreply.userName}}</h5>
+            </a>
+            <a *ngIf="name===tweetreply.userName" routerLink="/tweets/{{name}}/home">
+                <h5><ngx-avatar bgColor="green" fgColor="white" size="35"  name="{{tweetreply.userName}}"></ngx-avatar>&nbsp;{{tweetreply.userName}}</h5>
+            </a>
+            <p class="nm">{{tweetreply.Reply}}</p>
+            <small class="text-muted">{{tweetreply.ReplyTime | date : 'dd MMM yyyy, h:mm a'}}</small>
+        </li>
+    </ul>
+    </div>
+</div>

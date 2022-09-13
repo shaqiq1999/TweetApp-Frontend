@@ -1,0 +1,27 @@
+<h1>Login!</h1>
+<div id="login-form-wrap">
+<div style="padding: 0 60px;" class="container">
+
+    <div class="alert alert-warning" *ngIf='errorMessage'>{{errorMessage}}</div>
+
+    <div>
+
+        <div class="form-group row">
+            <label for="userName" class="col-sm-4 col-form-label">Login ID</label>
+            <i style="padding: 10px; background: rgb(5, 162, 18); color: white; height:100%; float:right; text-align: center;" class="fa fa-user col-sm-1 col-form-label"></i>
+            <input type="text" style="width: 55%;" class="form-control col-sm-7" placeholder="Enter Login ID" required="required"
+                [(ngModel)]="userName">
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-sm-4 col-form-label" >Password</label>
+            <i style="padding: 10px; background: rgb(5, 162, 18); color: white; height:100%; float:right; text-align: center;" class="fa fa-key col-sm-1 col-form-label"></i>
+            <input type="password" style="width: 55%;"  class="col-sm-7 form-control" placeholder="Enter Password" required="required"
+                [(ngModel)]="password">
+        </div>
+
+        <button (click)=handleLogin() class="btn btn-success">Login</button>
+        <br/>
+        <a routerLink="/tweets/forgot">Forgot Password?</a>
+    </div>
+</div>
+</div>>

@@ -1,0 +1,18 @@
+<br>
+<br>
+<h1>Update Tweet</h1>
+
+
+<div class="container">
+    <div class="form-group">
+        <textarea class="form-control" rows="5" maxlength="194" defaultValue="xxx"
+            [(ngModel)]="tweet.TweetBody"></textarea>
+    </div>
+    <div *ngIf=tweetInValid class="alert alert-warning">{{tweetInValid}}
+    </div>
+    <div>
+        <button class="btn btn-success" (click)=updateTweet()>Update Tweet</button>
+    </div>
+    <br>
+    <br>
+</div>

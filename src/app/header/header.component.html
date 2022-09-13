@@ -1,0 +1,26 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-success pad">
+        <div>
+            
+        <a class="navbar-brand" href="" *ngIf="authenticationService.isUserLoggedIn()" routerLink="/tweets/{{this.authenticationService.getUser()}}/home" ><i class="fa fa-twitter" style="font-size:25px;color:#ffffff"></i>&nbsp;TweetApp</a>
+        <a class="navbar-brand" href="" *ngIf="!authenticationService.isUserLoggedIn()" routerLink="/tweets/login" ><i class="fa fa-twitter" style="font-size:25px;color:#ffffff"></i>&nbsp;TweetApp</a></div>
+        <ul class="navbar-nav">
+            <li><a *ngIf="!authenticationService.isUserLoggedIn()" routerLink="/tweets/login" class="nav-link">Login</a></li>
+            <li><a *ngIf="!authenticationService.isUserLoggedIn()" routerLink="/tweets/register" class="nav-link">Register</a></li>
+            <li><a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/tweets/{{this.authenticationService.getUser()}}/home" class="nav-link">Home</a></li>
+            <li><a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/tweets/{{this.authenticationService.getUser()}}/all" class="nav-link">Tweets</a></li>
+            <li><a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/tweets/{{this.authenticationService.getUser()}}/users/all" class="nav-link">All Users</a></li>
+            <li><a *ngIf="authenticationService.isUserLoggedIn()"  class="nav-link">Verified&nbsp;<a class="material-icons m-icons">
+                verified
+            </a></a></li>
+        </ul>
+
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><button *ngIf="authenticationService.isUserLoggedIn()" routerLink="/tweets/logout" class="btn btn-outline-info"><span>Logout</span><span class="material-icons m-icons">
+                logout
+                </span></button></li>
+            
+        </ul>
+    </nav>
+
+</header>
