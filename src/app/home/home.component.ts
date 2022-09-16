@@ -85,11 +85,12 @@ export class HomeComponent implements OnInit {
     }
     else {
       this.tweetInValid = false
-      this.service.postTweets(this.name, new Tweets(this.id, this.uniqueId, this.name, this.tweetbody + " " + this.tags, new Date(), this.likeduser, this.likescount, this.tweetreply)).subscribe(response => {
+      this.service.postTweets(this.name, new Tweets(this.id, this.uniqueId, this.name, this.tweetbody , new Date(), this.likeduser, this.likescount, this.tweetreply)).subscribe(response => {
         this.tweetbody = ''
         // this.router.navigate(['tweets', this.name, 'home']).then(() => {
         //   window.location.reload();
         // });
+        this.tweetsToShow=''
         this.ngOnInit();
 
       });

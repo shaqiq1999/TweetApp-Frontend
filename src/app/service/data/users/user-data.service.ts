@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { baseUrl } from 'src/environments/environment';
 
 export class Users {
   constructor(public FirstName: string, public LastName: string, public Email: string, public userName: string, public password: string,public securityKey:string, public ContactNumber: string) { }
@@ -20,30 +21,30 @@ export class UserDataService {
   constructor(private http: HttpClient) { }
 
   register(user: Users) {
-    console.log(user)
-    return this.http.post("http://localhost:33892/api/v1/tweets/register", user)
+    
+    return this.http.post(baseUrl+"/api/v1/tweets/register", user)
   }
 
   getAllUsers() {
-    return this.http.get<Users[]>("http://localhost:33892/api/v1/tweets/users/all")
+    return this.http.get<Users[]>(baseUrl+"/api/v1/tweets/users/all")
   }
 
   getUser(userName: String) {
-    return this.http.get<Users[]>(`http://localhost:33892/api/v1/tweets/user/search/${userName}`)
+    return this.http.get<Users[]>(baseUrl+`/api/v1/tweets/user/search/${userName}`)
   }
   forgot(userName: String, forgotKey:ForgotKey) {
-    return this.http.post(`http://localhost:33892/api/v1/tweets/${userName}/forgot`,forgotKey,{
+    return this.http.post(baseUrl+`/api/v1/tweets/${userName}/forgot`,forgotKey,{
       observe:'body',responseType:'text'as 'json'
     })
   }
 
  
   searchByRegex(str : string){
-    return this.http.get<Users[]>(`http://localhost:33892/api/v1/tweets/user/search/${str}`)
+    return this.http.get<Users[]>(baseUrl+`/api/v1/tweets/user/search/${str}`)
   }
   authenticateUser(loginn:LogIn){
     
     
-    return this.http.post(`http://localhost:33892/api/v1/tweets/login`,loginn)
+    return this.http.post(baseUrl+`/api/v1/tweets/login`,loginn)
   }
 }
