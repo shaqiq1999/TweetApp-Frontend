@@ -16,7 +16,7 @@
         </ul>
 
         <ul class="navbar-nav navbar-collapse justify-content-end">
-            <li><button *ngIf="authenticationService.isUserLoggedIn()" routerLink="/tweets/logout" class="btn btn-outline-info"><span>Logout</span><span class="material-icons m-icons">
+            <li><button *ngIf="authenticationService.isUserLoggedIn()" routerLink="/tweets/{{this.authenticationService.getUser()}}/logout" class="btn btn-outline-info"><span>Logout</span><span class="material-icons m-icons">
                 logout
                 </span></button></li>
             

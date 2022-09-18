@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'tweets/:userName/update/:tweetId', component: UpdateComponent, canActivate:[RouteGuardService] },
   { path: 'tweets/:userName/all', component: TweetsComponent, canActivate:[RouteGuardService] },
   { path: 'tweets/:userName/users/all', component: UsersComponent, canActivate:[RouteGuardService] },
-  { path: 'tweets/logout', component: LogoutComponent, canActivate:[RouteGuardService] },
+  { path: 'tweets/:userName/logout', component: LogoutComponent, canActivate:[RouteGuardService] },
   { path: 'tweets/:userName/user/:UserName1', component: UserTweetsComponent, canActivate:[RouteGuardService] },
   { path: 'tweets/:userName/comments/:tweetId', component: CommentsComponent, canActivate:[RouteGuardService] },
   { path: '**', component: ErrorComponent }
