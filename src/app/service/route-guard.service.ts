@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthenticationService } from './auth/authentication.service';
 
 @Injectable({
@@ -7,10 +7,12 @@ import { AuthenticationService } from './auth/authentication.service';
 })
 export class RouteGuardService implements CanActivate {
 
-  constructor(private router: Router, private authenticationService: AuthenticationService) { }
-
+  constructor(private router: Router,private route:ActivatedRoute, private authenticationService: AuthenticationService) { }
+  urlUser:any
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authenticationService.isUserLoggedIn()) {
+    this.urlUser=route.params['userName']
+    let user=localStorage.getItem('authenticatedUser')    
+    if (this.authenticationService.isUserLoggedIn()&&(user===this.urlUser)) {
       return true
     }
     else {

@@ -49,7 +49,7 @@ export class UserTweetsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private service: TweetsDataService, private router: Router, private serv: UserDataService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.loggedinname = this.route.snapshot.params['UserName2']
+    this.loggedinname = this.route.snapshot.params['userName']
     this.currentname = this.route.snapshot.params['UserName1']
 
     // this.serv.getUser(this.loggedinname).subscribe(data => {
