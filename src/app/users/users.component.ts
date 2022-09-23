@@ -52,7 +52,7 @@ export class UsersComponent implements OnInit {
       this.service.searchByRegex(this.str).subscribe(data => {
         this.users = data
 
-
+      // uncommitted
 
 
 
